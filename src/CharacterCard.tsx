@@ -6,7 +6,6 @@ function Card(props: { name: string, image: string, status: string }) {
 
     return (
         <div className="card">
-            <div></div>
             <p className="name">
                 {props.name}
             </p>

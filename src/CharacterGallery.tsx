@@ -14,5 +14,4 @@ function Gallery(props: {listOfChars : MinifiedChar[]}){
     )
 }
 
-
 export default Gallery;
