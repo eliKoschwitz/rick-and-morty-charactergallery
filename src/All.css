@@ -1,0 +1,21 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 30px 0;
+}
+
+.name {
+    margin: 0 0 10px 0;
+    font-size: 35px;
+}
+
+.image {
+    border-radius: 50%;
+}
+
+.status{
+    margin: 10px 0 0 0;
+    font-size: 15px;
+}
