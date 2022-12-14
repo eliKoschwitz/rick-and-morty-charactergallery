@@ -1,8 +1,16 @@
-import React from 'react';
+import axios from 'axios';
+
+import React, {useEffect, useState} from 'react';
 
 import './App.css';
-import CharacterGallery from "./CharacterGallery";
+import CharacterGallery, {MinifiedChar} from "./CharacterGallery";
 
+/*
+<div>
+    <CharacterGallery listOfChars = {giveObjectArray()}/>
+</div>
+ */
+/*
 const characters = [
   {
     "id": 1,
@@ -1129,23 +1137,37 @@ const characters = [
     "created": "2017-11-05T10:02:26.701Z"
   }
 ]
+*/
 
-export type MinifiedChar={
-  name : string,
-  image : string,
-  status: string
-}
-
+/*
 function giveObjectArray() : MinifiedChar[] {
   const minifiedChar = characters.map(character => {return {name: character.name, image: character.image, status: character.status} });
   return minifiedChar;
 }
+ */
 
+
+export type MinifiedChar={
+    name : string,
+    image : string,
+    status: string
+}
 
 function App() {
+  const [characters, setCharacters] = useState<MinifiedChar[]>([])
+
+  useEffect(() => {
+
+       axios.get("https://rickandmortyapi.com/api/character")
+          .then((response) => {return response.data})
+          .then(data => setCharacters(data.results))//packt daten in setCharacters dadurch useState und füllt characters data beinhaltet alle daten der rick and morty api
+          .catch(e => console.error(e))
+
+      }, [])
+
   return (
       <div>
-        <CharacterGallery listOfChars = {giveObjectArray()}/>
+          <CharacterGallery listOfChars = {characters}/>
       </div>
   );
 }
